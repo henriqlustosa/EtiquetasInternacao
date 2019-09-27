@@ -18,3 +18,6 @@ C:\Users\h013026\Documents\Visual Studio 2008\Projects\Etiquetas\Etiquetas\bin\R
 C:\Users\h013026\Documents\Visual Studio 2008\Projects\Etiquetas\Etiquetas\bin\Release\Etiquetas.pdb
 C:\Users\h013026\Documents\Visual Studio 2008\Projects\Etiquetas\Etiquetas\bin\Release\GenCode128.dll
 C:\Users\h013026\Documents\Visual Studio 2008\Projects\Etiquetas\Etiquetas\bin\Release\GenCode128.pdb
+C:\Users\h013026\Documents\Visual Studio 2008\Projects\Etiquetas\Etiquetas\bin\Release\Newtonsoft.Json.Compact.dll
+C:\Users\h013026\Documents\Visual Studio 2008\Projects\Etiquetas\Etiquetas\bin\Release\Newtonsoft.Json.Compact.pdb
+C:\Users\h013026\Documents\Visual Studio 2008\Projects\Etiquetas\Etiquetas\bin\Release\Newtonsoft.Json.Compact.xml

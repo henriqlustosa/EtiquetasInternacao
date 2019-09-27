@@ -35,17 +35,23 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.lblError = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.rb6 = new System.Windows.Forms.RadioButton();
-            this.rb8 = new System.Windows.Forms.RadioButton();
+            this.lbTitulo = new System.Windows.Forms.Label();
+            this.rbEtiqueta_6 = new System.Windows.Forms.RadioButton();
+            this.rbEtiqueta_8 = new System.Windows.Forms.RadioButton();
+            this.lbQuarto = new System.Windows.Forms.Label();
+            this.txbQuarto = new System.Windows.Forms.TextBox();
+            this.lbLeito = new System.Windows.Forms.Label();
+            this.txbLeito = new System.Windows.Forms.TextBox();
+            this.lbAndar = new System.Windows.Forms.Label();
+            this.txbAndar = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btImprimir
             // 
-            this.btImprimir.Location = new System.Drawing.Point(192, 157);
+            this.btImprimir.Location = new System.Drawing.Point(192, 216);
             this.btImprimir.Name = "btImprimir";
             this.btImprimir.Size = new System.Drawing.Size(75, 23);
-            this.btImprimir.TabIndex = 2;
+            this.btImprimir.TabIndex = 5;
             this.btImprimir.Text = "Imprimir";
             this.btImprimir.UseVisualStyleBackColor = true;
             this.btImprimir.Click += new System.EventHandler(this.btImprimir_Click);
@@ -53,18 +59,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 73);
+            this.label1.Location = new System.Drawing.Point(31, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 11;
             this.label1.Text = "Informe o RH";
             // 
             // txbRh
             // 
-            this.txbRh.Location = new System.Drawing.Point(124, 73);
+            this.txbRh.Location = new System.Drawing.Point(124, 74);
             this.txbRh.Name = "txbRh";
             this.txbRh.Size = new System.Drawing.Size(143, 20);
-            this.txbRh.TabIndex = 0;
+            this.txbRh.TabIndex = 1;
             this.txbRh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbRh_KeyPress);
             // 
             // printDocument1
@@ -87,46 +93,100 @@
             this.lblError.Size = new System.Drawing.Size(0, 13);
             this.lblError.TabIndex = 6;
             // 
-            // label2
+            // lbTitulo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(104, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(242, 20);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Sistema de Etiquetas Internação";
+            this.lbTitulo.AutoSize = true;
+            this.lbTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitulo.Location = new System.Drawing.Point(104, 22);
+            this.lbTitulo.Name = "lbTitulo";
+            this.lbTitulo.Size = new System.Drawing.Size(242, 20);
+            this.lbTitulo.TabIndex = 0;
+            this.lbTitulo.Text = "Sistema de Etiquetas Internação";
             // 
-            // rb6
+            // rbEtiqueta_6
             // 
-            this.rb6.AutoSize = true;
-            this.rb6.Location = new System.Drawing.Point(124, 120);
-            this.rb6.Name = "rb6";
-            this.rb6.Size = new System.Drawing.Size(77, 17);
-            this.rb6.TabIndex = 8;
-            this.rb6.TabStop = true;
-            this.rb6.Text = "6 etiquetas";
-            this.rb6.UseVisualStyleBackColor = true;
+            this.rbEtiqueta_6.AutoSize = true;
+            this.rbEtiqueta_6.Location = new System.Drawing.Point(124, 183);
+            this.rbEtiqueta_6.Name = "rbEtiqueta_6";
+            this.rbEtiqueta_6.Size = new System.Drawing.Size(77, 17);
+            this.rbEtiqueta_6.TabIndex = 8;
+            this.rbEtiqueta_6.TabStop = true;
+            this.rbEtiqueta_6.Text = "6 etiquetas";
+            this.rbEtiqueta_6.UseVisualStyleBackColor = true;
             // 
-            // rb8
+            // rbEtiqueta_8
             // 
-            this.rb8.AutoSize = true;
-            this.rb8.Location = new System.Drawing.Point(241, 120);
-            this.rb8.Name = "rb8";
-            this.rb8.Size = new System.Drawing.Size(77, 17);
-            this.rb8.TabIndex = 9;
-            this.rb8.TabStop = true;
-            this.rb8.Text = "8 etiquetas";
-            this.rb8.UseVisualStyleBackColor = true;
+            this.rbEtiqueta_8.AutoSize = true;
+            this.rbEtiqueta_8.Location = new System.Drawing.Point(242, 183);
+            this.rbEtiqueta_8.Name = "rbEtiqueta_8";
+            this.rbEtiqueta_8.Size = new System.Drawing.Size(77, 17);
+            this.rbEtiqueta_8.TabIndex = 9;
+            this.rbEtiqueta_8.TabStop = true;
+            this.rbEtiqueta_8.Text = "8 etiquetas";
+            this.rbEtiqueta_8.UseVisualStyleBackColor = true;
+            // 
+            // lbQuarto
+            // 
+            this.lbQuarto.AutoSize = true;
+            this.lbQuarto.Location = new System.Drawing.Point(189, 125);
+            this.lbQuarto.Name = "lbQuarto";
+            this.lbQuarto.Size = new System.Drawing.Size(39, 13);
+            this.lbQuarto.TabIndex = 10;
+            this.lbQuarto.Text = "Quarto";
+            // 
+            // txbQuarto
+            // 
+            this.txbQuarto.Location = new System.Drawing.Point(242, 122);
+            this.txbQuarto.Name = "txbQuarto";
+            this.txbQuarto.Size = new System.Drawing.Size(50, 20);
+            this.txbQuarto.TabIndex = 3;
+            // 
+            // lbLeito
+            // 
+            this.lbLeito.AutoSize = true;
+            this.lbLeito.Location = new System.Drawing.Point(334, 125);
+            this.lbLeito.Name = "lbLeito";
+            this.lbLeito.Size = new System.Drawing.Size(30, 13);
+            this.lbLeito.TabIndex = 12;
+            this.lbLeito.Text = "Leito";
+            // 
+            // txbLeito
+            // 
+            this.txbLeito.Location = new System.Drawing.Point(386, 122);
+            this.txbLeito.Name = "txbLeito";
+            this.txbLeito.Size = new System.Drawing.Size(51, 20);
+            this.txbLeito.TabIndex = 4;
+            // 
+            // lbAndar
+            // 
+            this.lbAndar.AutoSize = true;
+            this.lbAndar.Location = new System.Drawing.Point(33, 125);
+            this.lbAndar.Name = "lbAndar";
+            this.lbAndar.Size = new System.Drawing.Size(35, 13);
+            this.lbAndar.TabIndex = 14;
+            this.lbAndar.Text = "Andar";
+            // 
+            // txbAndar
+            // 
+            this.txbAndar.Location = new System.Drawing.Point(90, 122);
+            this.txbAndar.Name = "txbAndar";
+            this.txbAndar.Size = new System.Drawing.Size(65, 20);
+            this.txbAndar.TabIndex = 2;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 195);
-            this.Controls.Add(this.rb8);
-            this.Controls.Add(this.rb6);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(482, 269);
+            this.Controls.Add(this.txbAndar);
+            this.Controls.Add(this.lbAndar);
+            this.Controls.Add(this.txbLeito);
+            this.Controls.Add(this.lbLeito);
+            this.Controls.Add(this.txbQuarto);
+            this.Controls.Add(this.lbQuarto);
+            this.Controls.Add(this.rbEtiqueta_8);
+            this.Controls.Add(this.rbEtiqueta_6);
+            this.Controls.Add(this.lbTitulo);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txbRh);
@@ -147,9 +207,15 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label lblError;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton rb6;
-        private System.Windows.Forms.RadioButton rb8;
+        private System.Windows.Forms.Label lbTitulo;
+        private System.Windows.Forms.RadioButton rbEtiqueta_6;
+        private System.Windows.Forms.RadioButton rbEtiqueta_8;
+        private System.Windows.Forms.Label lbQuarto;
+        private System.Windows.Forms.TextBox txbQuarto;
+        private System.Windows.Forms.Label lbLeito;
+        private System.Windows.Forms.TextBox txbLeito;
+        private System.Windows.Forms.Label lbAndar;
+        private System.Windows.Forms.TextBox txbAndar;
 
     }
 }
