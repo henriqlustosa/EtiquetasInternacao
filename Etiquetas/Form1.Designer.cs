@@ -38,12 +38,6 @@
             this.lbTitulo = new System.Windows.Forms.Label();
             this.rbEtiqueta_6 = new System.Windows.Forms.RadioButton();
             this.rbEtiqueta_8 = new System.Windows.Forms.RadioButton();
-            this.lbQuarto = new System.Windows.Forms.Label();
-            this.txbQuarto = new System.Windows.Forms.TextBox();
-            this.lbLeito = new System.Windows.Forms.Label();
-            this.txbLeito = new System.Windows.Forms.TextBox();
-            this.lbAndar = new System.Windows.Forms.Label();
-            this.txbAndar = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btImprimir
@@ -106,7 +100,7 @@
             // rbEtiqueta_6
             // 
             this.rbEtiqueta_6.AutoSize = true;
-            this.rbEtiqueta_6.Location = new System.Drawing.Point(124, 183);
+            this.rbEtiqueta_6.Location = new System.Drawing.Point(291, 75);
             this.rbEtiqueta_6.Name = "rbEtiqueta_6";
             this.rbEtiqueta_6.Size = new System.Drawing.Size(77, 17);
             this.rbEtiqueta_6.TabIndex = 8;
@@ -117,7 +111,7 @@
             // rbEtiqueta_8
             // 
             this.rbEtiqueta_8.AutoSize = true;
-            this.rbEtiqueta_8.Location = new System.Drawing.Point(242, 183);
+            this.rbEtiqueta_8.Location = new System.Drawing.Point(384, 77);
             this.rbEtiqueta_8.Name = "rbEtiqueta_8";
             this.rbEtiqueta_8.Size = new System.Drawing.Size(77, 17);
             this.rbEtiqueta_8.TabIndex = 9;
@@ -125,65 +119,11 @@
             this.rbEtiqueta_8.Text = "8 etiquetas";
             this.rbEtiqueta_8.UseVisualStyleBackColor = true;
             // 
-            // lbQuarto
-            // 
-            this.lbQuarto.AutoSize = true;
-            this.lbQuarto.Location = new System.Drawing.Point(189, 125);
-            this.lbQuarto.Name = "lbQuarto";
-            this.lbQuarto.Size = new System.Drawing.Size(39, 13);
-            this.lbQuarto.TabIndex = 10;
-            this.lbQuarto.Text = "Quarto";
-            // 
-            // txbQuarto
-            // 
-            this.txbQuarto.Location = new System.Drawing.Point(242, 122);
-            this.txbQuarto.Name = "txbQuarto";
-            this.txbQuarto.Size = new System.Drawing.Size(50, 20);
-            this.txbQuarto.TabIndex = 3;
-            // 
-            // lbLeito
-            // 
-            this.lbLeito.AutoSize = true;
-            this.lbLeito.Location = new System.Drawing.Point(334, 125);
-            this.lbLeito.Name = "lbLeito";
-            this.lbLeito.Size = new System.Drawing.Size(30, 13);
-            this.lbLeito.TabIndex = 12;
-            this.lbLeito.Text = "Leito";
-            // 
-            // txbLeito
-            // 
-            this.txbLeito.Location = new System.Drawing.Point(386, 122);
-            this.txbLeito.Name = "txbLeito";
-            this.txbLeito.Size = new System.Drawing.Size(51, 20);
-            this.txbLeito.TabIndex = 4;
-            // 
-            // lbAndar
-            // 
-            this.lbAndar.AutoSize = true;
-            this.lbAndar.Location = new System.Drawing.Point(33, 125);
-            this.lbAndar.Name = "lbAndar";
-            this.lbAndar.Size = new System.Drawing.Size(35, 13);
-            this.lbAndar.TabIndex = 14;
-            this.lbAndar.Text = "Andar";
-            // 
-            // txbAndar
-            // 
-            this.txbAndar.Location = new System.Drawing.Point(90, 122);
-            this.txbAndar.Name = "txbAndar";
-            this.txbAndar.Size = new System.Drawing.Size(65, 20);
-            this.txbAndar.TabIndex = 2;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 269);
-            this.Controls.Add(this.txbAndar);
-            this.Controls.Add(this.lbAndar);
-            this.Controls.Add(this.txbLeito);
-            this.Controls.Add(this.lbLeito);
-            this.Controls.Add(this.txbQuarto);
-            this.Controls.Add(this.lbQuarto);
             this.Controls.Add(this.rbEtiqueta_8);
             this.Controls.Add(this.rbEtiqueta_6);
             this.Controls.Add(this.lbTitulo);
@@ -210,12 +150,6 @@
         private System.Windows.Forms.Label lbTitulo;
         private System.Windows.Forms.RadioButton rbEtiqueta_6;
         private System.Windows.Forms.RadioButton rbEtiqueta_8;
-        private System.Windows.Forms.Label lbQuarto;
-        private System.Windows.Forms.TextBox txbQuarto;
-        private System.Windows.Forms.Label lbLeito;
-        private System.Windows.Forms.TextBox txbLeito;
-        private System.Windows.Forms.Label lbAndar;
-        private System.Windows.Forms.TextBox txbAndar;
 
     }
 }

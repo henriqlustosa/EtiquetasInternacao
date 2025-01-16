@@ -11,3 +11,5 @@ C:\Users\h013026\Documents\Visual Studio 2008\Projects\Etiquetas\Etiquetas\bin\x
 C:\Users\h013026\Documents\Visual Studio 2008\Projects\Etiquetas\Etiquetas\bin\x86\Release\GenCode128.pdb
 C:\Users\h013026\Documents\Visual Studio 2008\Projects\Etiquetas\Etiquetas\obj\x86\Release\Etiquetas.exe
 C:\Users\h013026\Documents\Visual Studio 2008\Projects\Etiquetas\Etiquetas\obj\x86\Release\Etiquetas.pdb
+G:\OneDrive - Default Directory\OneDrive - rede.sp\Workspace_Etiqueta_Internacao_2024_Last\EtiquetasInternacao\Etiquetas\obj\x86\Release\Etiquetas.exe
+G:\OneDrive - Default Directory\OneDrive - rede.sp\Workspace_Etiqueta_Internacao_2024_Last\EtiquetasInternacao\Etiquetas\obj\x86\Release\Etiquetas.pdb
