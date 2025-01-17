@@ -16,7 +16,7 @@ using System.Drawing.Printing;
 
 namespace Etiquetas
 {
-    public partial class Form1 : Form
+    public partial class Etiqueta : Form
     {
         // Track potential errors or status
         private string _errorMessage = string.Empty;
@@ -32,22 +32,26 @@ namespace Etiquetas
         private string _leito = "";
         private string _clinica = "";
 
-        public Form1()
+        public Etiqueta()
         {
             InitializeComponent();
+            // ...
+            cbQtdEtiquetas.SelectedIndex = 0; // Seleciona o 1º item da lista
+            // Exemplo: se quiser selecionar o terceiro item
+            // comboBox1.SelectedIndex = 2;
 
             // Initialize printing settings
             printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Custom2", 400, 1000);
             //printDialog1.PrinterSettings.DefaultPageSettings.PaperSize = new PaperSize("Custom2", 400, 1000);
 
             // Configure printer and print
-            printDocument1.PrinterSettings.PrinterName = "HP TI";
-
+            //printDocument1.PrinterSettings.PrinterName = "HP TI";
+            printDocument1.PrinterSettings.PrinterName = "PrinterEtiqueta";
             //printDocument1.PrinterSettings.PrinterName = "ImpressoraPS_";
             // Default radio button
-            rbEtiqueta_8.Checked = true;
+           
         }
-
+      
         #region Models
 
         public class Paciente
@@ -60,6 +64,8 @@ namespace Etiquetas
             public string dt_data_nascimento { get; set; }
             public int nr_idade { get; set; }
             public string Bmr { get; set; }
+            public string nm_pai { get; set; }
+            public string nm_nome_social { get; set; }
         }
 
         public class Internacao
@@ -104,7 +110,18 @@ namespace Etiquetas
             {
                 int rhNumber = Convert.ToInt32(txbRh.Text);
                 FetchPacienteData(rhNumber);
-                printDocument1.Print();  // This invokes printDocument1_PrintPage
+                // (a) Invocar o printDocument1.Print() na thread de UI:
+                this.Invoke((MethodInvoker)delegate
+                {
+                    int i = 0;
+                    int size = Convert.ToInt32(cbQtdEtiquetas.SelectedItem);
+
+                    while (i < size)
+                    {
+                        printDocument1.Print();
+                        i++;
+                    }
+                });
             }
             catch (Exception ex)
             {
@@ -140,28 +157,24 @@ namespace Etiquetas
                     string.Format("Atenção! Paciente com RH: {0} identificado com MDR.", txbRh.Text));
             }
 
-            // Decide how many labels based on the radio buttons
-            int labelCount = rbEtiqueta_6.Checked ? 6 : 8;
-
-            // Adjust the page size (height) depending on how many labels
-            int height = rbEtiqueta_6.Checked ? 1000 : 1200;
+          
+            int height = 1000;
             e.PageSettings.PaperSize = new PaperSize("Custom2", 400, height);
 
             // Draw the specified number of labels
-            int startX = 50;
-            int startY = 10;
+            int startX = 65;
+            int startY = 2;
 
-            // Vertical gap between labels
-            int labelSpacing = rbEtiqueta_6.Checked ? 167 : 150;
-
+           
+            int labelCount = Convert.ToInt32(cbQtdEtiquetas.SelectedItem);
             using (Graphics g = e.Graphics)
             {
-                for (int i = 0; i < labelCount; i++)
-                {
+                //for (int i = 0; i < labelCount; i++)
+                //{
                     // Y offset for each label
-                    int currentY = startY + i * labelSpacing;
-                    DrawSingleLabel(g, _paciente, txbRh.Text, currentY, startX);
-                }
+                 
+                    DrawSingleLabel(g, _paciente, txbRh.Text, startY, startX);
+               // }
             }
         }
 
@@ -248,55 +261,75 @@ namespace Etiquetas
             if (paciente == null) return;
 
             // Fonts
-            Font boldFont = new Font("Arial", 10, FontStyle.Bold);
-            Font regularFont = new Font("Arial", 10, FontStyle.Regular);
+            Font boldFont = new Font("Arial", 8, FontStyle.Bold);
+            Font regularFont = new Font("Arial", 8, FontStyle.Regular);
 
             // Prepare text segments
             string nomeCompleto = (paciente.nm_nome ?? "").Trim();
             string nomeMae = (paciente.nm_mae ?? "").Trim();
+            string nomeSocial = paciente.nm_nome_social ?? string.Empty;
+            string nomePai = paciente.nm_pai ?? string.Empty;
+            // If there's a nome social, concatenate it
+            if (!string.IsNullOrEmpty(nomeSocial))
+            {
+                nomeCompleto = nomeSocial + " (" + nomeCompleto + ")";
+            }
 
+            // If the mother's name is "DESCONHECIDA", use the father's name
+            if (nomeMae.Equals("DESCONHECIDA", StringComparison.OrdinalIgnoreCase))
+            {
+                nomeMae = nomePai;
+            }
             // Split name strings (out parameters)
             string nomeLinha1, nomeLinha2;
-            SplitString(nomeCompleto, 26, out nomeLinha1, out nomeLinha2);
+            SplitString(nomeCompleto, 31, out nomeLinha1, out nomeLinha2);
 
-            string maeLinha1, maeLinha2;
-            SplitString(nomeMae, 18, out maeLinha1, out maeLinha2);
 
+            nomeMae = AbreviarSomenteNomesDoMeio(nomeMae, 38);
+         
+            // Start drawing
+            g.DrawString(string.Format("Hospital do Servidor Publico Municipal"), boldFont, Brushes.Black, offsetX, offsetY + 7);
             // Build the line that contains RH, RF, and possibly BMR status
-            string rhRfLine = string.Format("RH: {0}       RF: {1}", rhText, paciente.cd_rf_matricula);
+            string rhRfLine = string.Format("Prontuario: {0}       RF: {1}", rhText, paciente.cd_rf_matricula);
             if (paciente.Bmr == "MDR")
             {
                 rhRfLine += "     MDR";
             }
 
-            // Start drawing
-            g.DrawString(rhRfLine, boldFont, Brushes.Black, offsetX, offsetY + 7);
+            // Nome (split across two lines if needed)
+            g.DrawString(
+                string.Format(rhRfLine),
+                regularFont,
+                Brushes.Black,
+                offsetX,
+                offsetY + 19
+            );
 
             // Nome (split across two lines if needed)
             g.DrawString(
-                string.Format("Nome: {0}", nomeLinha1),
+                string.Format("Paciente: {0}", nomeLinha1),
                 boldFont,
                 Brushes.Black,
                 offsetX,
-                offsetY + 24
+                offsetY + 31
             );
 
             if (!string.IsNullOrEmpty(nomeLinha2))
             {
                 g.DrawString(
-                    string.Format("       {0}", nomeLinha2),
+                    string.Format("                 {0}", nomeLinha2),
                     boldFont,
                     Brushes.Black,
                     offsetX,
-                    offsetY + 40
+                    offsetY + 43
                 );
             }
 
             // Decide vertical offset for the next line, depending on whether we used two lines
-            int nascIdadeSexoY = !string.IsNullOrEmpty(nomeLinha2) ? (offsetY + 56) : (offsetY + 56 - 16);
+            int nascIdadeSexoY = !string.IsNullOrEmpty(nomeLinha2) ? (offsetY + 55) : (offsetY + 55 - 12);
             // Nascimento / Idade / Sexo
             g.DrawString(
-                string.Format("Nasc: {0}  Idade: {1}  Sexo: {2}",
+                string.Format("Nasc: {0}      Idade: {1}      Sexo: {2}",
                     paciente.dt_data_nascimento,
                     paciente.nr_idade,
                     paciente.in_sexo),
@@ -307,34 +340,24 @@ namespace Etiquetas
             );
 
             // Mãe (split if needed)
-            int maeBaseY = !string.IsNullOrEmpty(nomeLinha2) ? (offsetY + 72) : (offsetY + 72 - 16);
+            int maeBaseY = nascIdadeSexoY + 12;
             g.DrawString(
-                string.Format("Mãe: {0}", maeLinha1),
+                string.Format("Mae: {0}", nomeMae),
                 regularFont,
                 Brushes.Black,
                 offsetX,
                 maeBaseY
             );
 
-            if (!string.IsNullOrEmpty(maeLinha2))
-            {
-                g.DrawString(
-                    string.Format("      {0}", maeLinha2),
-                    regularFont,
-                    Brushes.Black,
-                    offsetX,
-                    maeBaseY + 16
-                );
-                maeBaseY += 16;
-            }
-
+             int andarQuartoLeitoBaseY = maeBaseY + 12;
+          
             // Andar/Quarto/Leito
             string leitoString;
             if (string.IsNullOrEmpty(_andar) &&
                 string.IsNullOrEmpty(_quarto) &&
                 string.IsNullOrEmpty(_leito))
             {
-                leitoString = "Andar:____ Quarto:____ Leito:____";
+                leitoString = "Andar:____    Quarto:____    Leito:____";
             }
             else if (_andar == "Leito Extra")
             {
@@ -342,10 +365,10 @@ namespace Etiquetas
             }
             else
             {
-                leitoString = string.Format("Andar: {0} Quarto: {1} Leito: {2}", _andar, _quarto, _leito);
+                leitoString = string.Format("Andar: {0}    Quarto: {1}    Leito: {2}", _andar, _quarto, _leito);
             }
 
-            g.DrawString(leitoString, regularFont, Brushes.Black, offsetX, maeBaseY + 16);
+            g.DrawString(leitoString, regularFont, Brushes.Black, offsetX, andarQuartoLeitoBaseY);
         }
 
         /// <summary>
@@ -371,6 +394,76 @@ namespace Etiquetas
             part1 = original.Substring(0, maxLength);
             part2 = original.Substring(maxLength).Trim();
         }
+        /// <summary>
+        /// Mantém o primeiro e o último nome por extenso,
+        /// abrevia apenas os nomes do meio, caso o tamanho exceda 'tamanhoMaximo'.
+        /// Nunca abrevia as palavras "DE", "DA", "DO", "DOS", "DAS" (ignora case).
+        /// </summary>
+        /// <param name="nomeMae">Nome completo (ex.: "MARIA DAS DORES DE OLIVEIRA DA SILVA").</param>
+        /// <param name="tamanhoMaximo">Tamanho limite (ex.: 36).</param>
+        /// <returns>Nome encurtado se necessário.</returns>
+        private string AbreviarSomenteNomesDoMeio(string nomeMae, int tamanhoMaximo)
+        {
+            // 1) Se está vazio/nulo ou já é menor/igual ao limite, retorna como está
+            if (string.IsNullOrEmpty(nomeMae) || nomeMae.Length <= tamanhoMaximo)
+                return nomeMae;
+
+            // 2) Dividir em partes (por espaços)
+            //    Ex.: ["MARIA", "DAS", "DORES", "DE", "OLIVEIRA", "DA", "SILVA"]
+            var partes = nomeMae.Trim().Split(' ');
+
+            // Se só tiver uma palavra, não há "último" nome para manter, então corta forçado
+            if (partes.Length == 1)
+            {
+                return nomeMae.Substring(0, tamanhoMaximo);
+            }
+
+            // Lista (ou conjunto) de termos que NÃO devem ser abreviados
+            // Obs.: usando StringComparer.OrdinalIgnoreCase para ignorar maiúsc./minúsc.
+            var naoAbreviar = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+    {
+        "DE", "DA", "DO", "DOS", "DAS"
+    };
+
+            // 3) Mantemos partes[0] e partes[1] sem mexer (conforme seu código, que inicia em i=2)
+            //    e também o último (partes[partes.Length - 1]) sem mexer.
+            //    Abreviamos apenas as posições de 2 até (Length - 2).
+            //    Ajuste se desejar outra lógica.
+            for (int i = 2; i < partes.Length - 1; i++)
+            {
+                // Se a palavra estiver na lista de não-abreviar, pule.
+                if (naoAbreviar.Contains(partes[i]))
+                    continue;
+
+                // Se a palavra tiver mais de 1 letra, abrevia para "X."
+                // Ex.: "Oliveira" → "O."
+                if (partes[i].Length > 1)
+                {
+                    partes[i] = partes[i].Substring(0, 1) + ".";
+                }
+
+                // Recria a string e verifica o tamanho
+                string nomeMontado = string.Join(" ", partes);
+
+                if (nomeMontado.Length <= tamanhoMaximo)
+                {
+                    // Se já está dentro do limite, retornamos
+                    return nomeMontado;
+                }
+            }
+
+            // 4) Depois de abreviar tudo que foi possível, se ainda estiver grande,
+            //    faz um corte forçado:
+            string resultadoFinal = string.Join(" ", partes);
+            if (resultadoFinal.Length > tamanhoMaximo)
+            {
+                resultadoFinal = resultadoFinal.Substring(0, tamanhoMaximo);
+            }
+
+            return resultadoFinal;
+        }
+
+
 
         #endregion
     }

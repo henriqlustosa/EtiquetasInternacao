@@ -14,11 +14,8 @@ C:\Users\h013026\Documents\Visual Studio 2008\Projects\Etiquetas\Etiquetas\obj\x
 G:\OneDrive - Default Directory\OneDrive - rede.sp\Workspace_Etiqueta_Internacao_2024_Last\EtiquetasInternacao\Etiquetas\obj\x86\Debug\Etiquetas.exe
 G:\OneDrive - Default Directory\OneDrive - rede.sp\Workspace_Etiqueta_Internacao_2024_Last\EtiquetasInternacao\Etiquetas\obj\x86\Debug\Etiquetas.pdb
 G:\OneDrive - Default Directory\OneDrive - rede.sp\Workspace_Etiqueta_Internacao_2024_Last\EtiquetasInternacao\Etiquetas\obj\x86\Debug\ResolveAssemblyReference.cache
-G:\OneDrive - Default Directory\OneDrive - rede.sp\Workspace_Etiqueta_Internacao_2024_Last\EtiquetasInternacao\Etiquetas\obj\x86\Debug\Etiquetas.Form1.resources
 G:\OneDrive - Default Directory\OneDrive - rede.sp\Workspace_Etiqueta_Internacao_2024_Last\EtiquetasInternacao\Etiquetas\obj\x86\Debug\Etiquetas.Properties.Resources.resources
 G:\OneDrive - Default Directory\OneDrive - rede.sp\Workspace_Etiqueta_Internacao_2024_Last\EtiquetasInternacao\Etiquetas\obj\x86\Debug\Etiquetas.csproj.GenerateResource.Cache
 G:\OneDrive - Default Directory\OneDrive - rede.sp\Workspace_Etiqueta_Internacao_2024_Last\EtiquetasInternacao\Etiquetas\bin\x86\Debug\Etiquetas.exe
 G:\OneDrive - Default Directory\OneDrive - rede.sp\Workspace_Etiqueta_Internacao_2024_Last\EtiquetasInternacao\Etiquetas\bin\x86\Debug\Etiquetas.pdb
-G:\OneDrive - Default Directory\OneDrive - rede.sp\Workspace_Etiqueta_Internacao_2024_Last\EtiquetasInternacao\Etiquetas\bin\x86\Debug\Newtonsoft.Json.Compact.pdb
-G:\OneDrive - Default Directory\OneDrive - rede.sp\Workspace_Etiqueta_Internacao_2024_Last\EtiquetasInternacao\Etiquetas\bin\x86\Debug\Newtonsoft.Json.Compact.xml
-G:\OneDrive - Default Directory\OneDrive - rede.sp\Workspace_Etiqueta_Internacao_2024_Last\EtiquetasInternacao\Etiquetas\bin\x86\Debug\GenCode128.pdb
+G:\OneDrive - Default Directory\OneDrive - rede.sp\Workspace_Etiqueta_Internacao_2024_Last\EtiquetasInternacao\Etiquetas\obj\x86\Debug\Etiquetas.Etiqueta.resources

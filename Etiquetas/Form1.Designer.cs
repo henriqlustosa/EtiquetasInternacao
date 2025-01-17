@@ -1,6 +1,6 @@
 ﻿namespace Etiquetas
 {
-    partial class Form1
+    partial class Etiqueta
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Etiqueta));
             this.btImprimir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txbRh = new System.Windows.Forms.TextBox();
@@ -36,8 +37,9 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.lblError = new System.Windows.Forms.Label();
             this.lbTitulo = new System.Windows.Forms.Label();
-            this.rbEtiqueta_6 = new System.Windows.Forms.RadioButton();
-            this.rbEtiqueta_8 = new System.Windows.Forms.RadioButton();
+            this.cbQtdEtiquetas = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btImprimir
@@ -93,46 +95,63 @@
             this.lbTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitulo.Location = new System.Drawing.Point(104, 22);
             this.lbTitulo.Name = "lbTitulo";
-            this.lbTitulo.Size = new System.Drawing.Size(242, 20);
+            this.lbTitulo.Size = new System.Drawing.Size(253, 20);
             this.lbTitulo.TabIndex = 0;
-            this.lbTitulo.Text = "Sistema de Etiquetas Internação";
+            this.lbTitulo.Text = "Aplicação de Etiquetas Internação";
             // 
-            // rbEtiqueta_6
+            // cbQtdEtiquetas
             // 
-            this.rbEtiqueta_6.AutoSize = true;
-            this.rbEtiqueta_6.Location = new System.Drawing.Point(291, 75);
-            this.rbEtiqueta_6.Name = "rbEtiqueta_6";
-            this.rbEtiqueta_6.Size = new System.Drawing.Size(77, 17);
-            this.rbEtiqueta_6.TabIndex = 8;
-            this.rbEtiqueta_6.TabStop = true;
-            this.rbEtiqueta_6.Text = "6 etiquetas";
-            this.rbEtiqueta_6.UseVisualStyleBackColor = true;
+            this.cbQtdEtiquetas.FormattingEnabled = true;
+            this.cbQtdEtiquetas.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.cbQtdEtiquetas.Location = new System.Drawing.Point(351, 71);
+            this.cbQtdEtiquetas.Name = "cbQtdEtiquetas";
+            this.cbQtdEtiquetas.Size = new System.Drawing.Size(43, 21);
+            this.cbQtdEtiquetas.TabIndex = 12;
             // 
-            // rbEtiqueta_8
+            // label2
             // 
-            this.rbEtiqueta_8.AutoSize = true;
-            this.rbEtiqueta_8.Location = new System.Drawing.Point(384, 77);
-            this.rbEtiqueta_8.Name = "rbEtiqueta_8";
-            this.rbEtiqueta_8.Size = new System.Drawing.Size(77, 17);
-            this.rbEtiqueta_8.TabIndex = 9;
-            this.rbEtiqueta_8.TabStop = true;
-            this.rbEtiqueta_8.Text = "8 etiquetas";
-            this.rbEtiqueta_8.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(291, 77);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Etiquetas";
             // 
-            // Form1
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(291, 221);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(172, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Versao: 5.0.0     Data: 17/01/2025";
+            // 
+            // Etiqueta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 269);
-            this.Controls.Add(this.rbEtiqueta_8);
-            this.Controls.Add(this.rbEtiqueta_6);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cbQtdEtiquetas);
             this.Controls.Add(this.lbTitulo);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txbRh);
             this.Controls.Add(this.btImprimir);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Etiqueta";
+            this.Text = "ETIQUETAS";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,8 +167,9 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Label lbTitulo;
-        private System.Windows.Forms.RadioButton rbEtiqueta_6;
-        private System.Windows.Forms.RadioButton rbEtiqueta_8;
+        private System.Windows.Forms.ComboBox cbQtdEtiquetas;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
 
     }
 }
